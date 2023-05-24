@@ -113,19 +113,12 @@ csslr.model.analysis.lr <- function(modelFormula, DT.data, panelDataIdentifier='
   # There are a couple of problems in the execution of the next lines:
   # - The glm function will not find modelLink when it tries to build the family
   # - Later the vif function using glm results will not find modelFormula and DT.data which is stored as string in the model results
-  # Solution: Create a temporary environment on .GlobalEnv where these variables can be found and delete it before exiting
-
-  # Ensure that no existing variable is overwritten by accident
-  envExists <- FALSE
-  if (exists('.myEnv', envir = .GlobalEnv)) {
-    saveOldEnv <- .GlobalEnv$.myEnv
-    envExists <- TRUE
-  }
-
-  .GlobalEnv$.myEnv <- new.env()
-  .GlobalEnv$.myEnv$dt <- DT.data
-  .GlobalEnv$.myEnv$modelFormula <- modelFormula
-  .GlobalEnv$.myEnv$modelLink <- 'logit'
+  # Solution: Create a temporary environment on the function environment where these variables can be found and delete it before exiting
+  
+  .myEnv <- new.env()
+  .myEnv$dt <- DT.data
+  .myEnv$modelFormula <- modelFormula
+  .myEnv$modelLink <- 'logit'
 
   # Estimation of the full model
   if (quiet == FALSE)
@@ -329,11 +322,7 @@ csslr.model.analysis.lr <- function(modelFormula, DT.data, panelDataIdentifier='
     class(modelResults[["calib.test"]]) <- "csslr.model.analysis.lr.calib.test"
   }
 
-  if (envExists == TRUE) {
-    .GlobalEnv$.myEnv <- saveOldEnv
-  } else {
-    rm(.myEnv, envir = .GlobalEnv)
-  }
+  rm(.myEnv)
 
   class(modelResults) <- "csslr.model.analysis.lr"
 
