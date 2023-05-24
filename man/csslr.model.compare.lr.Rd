@@ -4,7 +4,7 @@
 \alias{csslr.model.compare.lr}
 \title{Routine for comparing two logistic regression models}
 \usage{
-csslr.model.compare.lr(...)
+csslr.model.compare.lr(lr1, lr2, DT.data)
 }
 \arguments{
 \item{lr1}{Logistic regression Model 1 (provided either as glm object or formula)}

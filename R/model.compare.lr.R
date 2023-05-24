@@ -37,7 +37,7 @@
 #' print(modelComparison)
 #'
 #' @export
-csslr.model.compare.lr <- function(...) {
+csslr.model.compare.lr <- function(lr1, lr2, DT.data) {
   UseMethod("csslr.model.compare.lr")
 }
 
