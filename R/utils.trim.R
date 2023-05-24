@@ -27,7 +27,7 @@ csslr.utils.trim.default <- function(trimObject,...) {
 #' 
 #' See also: http://www.r-bloggers.com/trimming-the-fat-from-glm-models-in-r/
 #' @noRd
-csslr.utils.trim.glm <- function(trimObject) {
+csslr.utils.trim.glm <- function(trimObject, ...) {
   trimObject$residuals <- c()
   trimObject$fitted.values <- c()
   trimObject$effects <- c()
@@ -65,7 +65,7 @@ csslr.utils.trim.roc <- function(trimObject, trim4plot=FALSE) {
 
 #' Routine to trim roc.test output to reduce memory
 #' @noRd
-csslr.utils.trim.htest <- function(trimObject) {
+csslr.utils.trim.htest <- function(trimObject, ...) {
   trimObject$roc1 <- csslr.utils.trim(trimObject$roc1)
   trimObject$roc2 <- csslr.utils.trim(trimObject$roc2)
 
@@ -74,7 +74,7 @@ csslr.utils.trim.htest <- function(trimObject) {
 
 #' Routine to trim speedglm objects
 #' @noRd
-csslr.utils.trim.speedglm <- function(trimObject) {
+csslr.utils.trim.speedglm <- function(trimObject, ...) {
   trimObject <- csslr.utils.trim.glm(trimObject)
 
   return(trimObject)
