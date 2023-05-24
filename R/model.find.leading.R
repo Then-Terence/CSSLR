@@ -19,6 +19,8 @@
 #' and a data.table containing the results of the tests and decisions made
 #' @noRd
 csslr.model.find.leading <- function(topModels, DT.data, pAUC, pMSE, debugLevel) {
+  
+  Model = Decision = NULL # due to NSE notes in R CMD check
 
   model1 <- paste(deparse(topModels[['AUC_Formula']], width.cutoff = 500), collapse="")
   model2 <- paste(deparse(topModels[['MSE_Formula']], width.cutoff = 500), collapse="")

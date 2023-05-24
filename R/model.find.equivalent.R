@@ -23,6 +23,10 @@
 #' @noRd
 csslr.model.find.equivalent <- function(modelsCandidates, modelsLeading, DT.data, pAUC, pMSE,
                                         maxEquivalentModels, debugLevel) {
+  
+  Model = Decision = `AUC1-test p-value` = `AUC2-test p-value` =
+    `MSE1-test p-value` = `MSE2-test p-value` = NULL # due to NSE notes in R CMD check
+  
   leadingModelsIncluded <- FALSE
   DT.report <- data.table()
   modelsEquivalent = modelsLeading
