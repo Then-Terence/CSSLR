@@ -232,7 +232,7 @@ csslr.model.analysis.lr <- function(modelFormula, DT.data, panelDataIdentifier='
       if (length(increments) > 1) {
         modelComponents <- attr(fullModel$terms, "term.labels")
         if (incrementVariable == F & grepl(':', increment, fixed = T)) {
-          reducedComponents <- modelComponents[modelComponents != increment.tmp]
+          reducedComponents <- modelComponents[modelComponents != increment]
         } else {
           reducedComponents <- modelComponents[!grepl(increment, modelComponents, fixed = T)]
           if (increment %in% names(includedVariables)) {
@@ -259,6 +259,7 @@ csslr.model.analysis.lr <- function(modelFormula, DT.data, panelDataIdentifier='
       }
       # Predictions are needed for AUC and MSE only
       if ((roc == TRUE) | (calib == TRUE)) {
+        tempName = NULL # due to NSE notes in R CMD check
         DT.temp[, tempName := predict(reducedModel, type="response", DT.data)]
         setnames(DT.temp, "tempName", increment)
         modelNames <- c(modelNames, increment)
