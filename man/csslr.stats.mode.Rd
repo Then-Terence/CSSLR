@@ -8,6 +8,8 @@ csslr.stats.mode(vec, na.rm = FALSE)
 }
 \arguments{
 \item{vec}{Input vector for which the mode should be computed}
+
+\item{na.rm}{a logical evaluating to TRUE or FALSE indicating whether NA values should be stripped before the computation proceeds.}
 }
 \value{
 Mode of the input vector, i.e., its most frequent value

@@ -10,6 +10,7 @@
 #' @param detailed If TRUE all models selection steps are reported in separate tables;
 #' if FALSE only the leading and equivalent models are reported without details on the
 #' selection algorithm
+#' @param glossary If TRUE, provides a glossary with explanation of the most important concepts applied in the selection algorithm
 #' @export
 csslr.utils.genreport <- function(SelectionOutput, DT.data, detailed = TRUE, glossary = TRUE) {
 

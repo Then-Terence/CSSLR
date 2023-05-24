@@ -19,6 +19,8 @@ csslr.utils.genreport(
 \item{detailed}{If TRUE all models selection steps are reported in separate tables;
 if FALSE only the leading and equivalent models are reported without details on the
 selection algorithm}
+
+\item{glossary}{If TRUE, provides a glossary with explanation of the most important concepts applied in the selection algorithm}
 }
 \description{
 Routine to create a PDF report of an automated logistic regression model selection.
